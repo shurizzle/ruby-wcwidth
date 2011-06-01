@@ -1,0 +1,1 @@
+The only method for this lib is String#width, deal with it.
