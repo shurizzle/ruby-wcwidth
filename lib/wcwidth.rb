@@ -112,13 +112,15 @@ protected
 
   def mk_wcswidth
     ws = self.each_char.map(&:width)
-    return -1 unless ws.select {|x| x < 0 }.empty?
+    return -1 unless ws.all?{|x|x>=0}
     ws.inject(:+)
   end
 
 public
   def width
-    if self.size == 1
+    if self.size == 0
+      0
+    elsif self.size == 1
       self.mk_wcwidth
     else
       self.mk_wcswidth
